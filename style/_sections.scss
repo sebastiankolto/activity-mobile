@@ -1,0 +1,604 @@
+@import "mixins";
+
+// FOR HIDING ELEMENTS WHICH ARE BEHIND
+.hiding {
+  opacity: 50%;
+}
+
+// SCREEN 1
+.header-main {
+  display: flex;
+  width: 100%;
+  background: $primaryGradient;
+  justify-content: center;
+  align-items: center;
+  border-radius: 0px 0px 50px 50px;
+}
+
+
+.header-image {
+  width: 80vw;
+  max-width: 300px;
+  margin-top: 3vh;
+  margin-bottom: 2%;
+  transform: translateX(5px);
+}
+
+@media screen and (max-width: 700px) {
+    .header-image {
+      margin-top: 10vh;
+    }
+  }
+
+// For making the image lower on large screens, so it is between the two elements
+// @media screen and (min-height: 700px) {
+//   .header-image {
+//     margin-top: 12vh;
+//   }
+// }
+
+// BUTTONS
+
+button:active{
+  box-shadow:none;
+  transform:scale(0.98);
+  transition: all ease-in 0.03s;
+}
+// MAIN BUTTON CONTAINER IN THE FIRST SCREEN
+.main-buttons {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  justify-content: flex-end;
+  margin-bottom:2vh;
+}
+// For making the buttons closer to the bottom on really long screens
+@media screen and (min-height: 700px) {
+  .main-buttons {
+    margin-bottom: 12vh;
+  }
+}
+
+// BLUE BUTTON
+.btn-primary {
+  box-shadow: $primaryShadow;
+  justify-self: flex-end;
+  background: $primaryGradient;
+  color: $background;
+}
+
+.btn-primary:active{
+  background:$primaryGradientActive;
+}
+
+.btn-primary-timer {
+  box-shadow: $primaryShadow;
+  justify-self: flex-end;
+  background: $primaryGradient;
+  color: $background;
+  margin-top: 30px;
+}
+
+.btn-primary-timer {
+  background:$primaryGradientActive;
+}
+
+@media screen and (min-height: 700px) {
+  .btn-primary-timer {
+    margin-top: 10vh;
+  }
+}
+
+// BLUE BUTTON INACTIVE
+.btn-primary--inactive {
+  background: $primary3;
+  color: $background;
+  pointer-events: none;
+}
+
+// BTN with only borders
+.btn-secondary {
+  border: 2px solid $primary;
+  background: $background;
+  box-shadow: $primaryShadow;
+  color: $primary;
+  justify-self: flex-end;
+}
+
+.btn-secondary:active{
+  background:$primary3;
+}
+
+// INPUT BUTTONS
+.input-buttons {
+  @include center();
+  margin-top: 20px;
+}
+
+// Regular add just the shape
+.input__add {
+  @include center();
+  width: 44px;
+  height: 44px;
+  margin: 0px 10px;
+  border-radius: 10px;
+  box-shadow: $successShadow;
+  background: $success;
+  cursor: pointer;
+}
+
+.input__add:active{
+   background:$successActive;
+}
+
+// For when adding is active
+
+// When adding is inactive
+.input__add--inactive {
+  background: $success3;
+  box-shadow: none;
+  pointer-events: none;
+}
+
+.input__add img {
+  width: 16px;
+  height: 16px;
+  // This centers the plus sign in the button
+  margin: 0 auto;
+}
+
+//
+//
+//
+// Input minus just shape
+.input__subtract {
+  @include center();
+  width: 44px;
+  height: 44px;
+  margin: 0px 10px;
+  border-radius: 10px;
+  background: $errorGradient;
+  box-shadow: $errorShadow;
+  cursor: pointer;
+}
+
+.input__subtract:active{
+  background: $errorActive;
+}
+
+// WHen subtracting is active
+// .input__subtract--active {
+//   background: $errorGradient;
+//   box-shadow: $errorShadow;
+//   cursor: pointer;
+// }
+// When subtracting is inactive
+.input__subtract--inactive {
+  background: $error3;
+  box-shadow: none;
+  pointer-events: none;
+}
+
+.input__subtract img {
+  width: 16px;
+  margin: 0 auto;
+}
+
+// SUBMITING THE PLAYERS AND THE FORM
+.add-team__submit-btn {
+  display: flex;
+  width: 100%;
+  background: $primaryGradient;
+  color: $background;
+
+  // THIS WORKS AS SELF ALIGN
+  margin-top: auto;
+}
+
+.add-team__submit-btn:active{
+  background:$primaryGradientActive;
+}
+//
+//
+//
+//
+//
+//
+//
+//
+//
+// SCREEN 2 ADDING A TEAM WINDOW
+.header-secondary {
+  @include center();
+  width: 100%;
+  background: $primaryGradient;
+  border-radius: 0px 0px 25px 25px;
+  color: $background;
+}
+
+.header-secondary--inactive{
+  background:$primary3;
+}
+
+.header-secondary h2{
+  margin-top:6vh;
+  margin-bottom:2vh;
+}
+
+
+// ADD team window with inputs
+.add-team {
+  display: flex;
+  flex-direction: column;
+  position: absolute;
+  z-index: 10;
+  align-items: center;
+  background: $background;
+  box-shadow: $backgroundShadow;
+  width: 90vw;
+  max-width: 500px;
+  height: 504px;
+  // THIS CENTERS THE DIV WITH POSITION ABSOLUTE
+  top: 50%;
+  transform: translateY(-50%);
+  border-radius: 10px;
+  // This moves the window in the middle of the height
+}
+
+.add-team__header {
+  @include center();
+  border-radius: 10px 10px 0px 0px;
+  height: 80px;
+  width: 100%;
+  background: $primaryGradient;
+}
+
+// I want to have all h6 inside team addding window to have the same margin
+.add-team h6 {
+  margin-top: 1.2em;
+}
+
+.add-team__form {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: 374px;
+  margin-top: 0.5em;
+  padding: 0px 20px 20px 20px;
+}
+
+.add-team__form input {
+  height: 44px;
+  background: $gray6;
+  outline: none;
+  border: none;
+  margin-top: 10px;
+  padding: 20px;
+  border-radius: 10px;
+  font-family: "sf-pro-display-regular";
+  font-size: 1.5rem;
+  letter-spacing: 5%;
+  color: $bodyCopy;
+}
+
+.add-team__form input:focus {
+  outline: 2px solid $primary;
+  outline-offset: 2px;
+}
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+// SCREEN 3 - teams in the bottom of the screen
+.main-buttons--small-header {
+  display: flex;
+  flex-direction: column;
+  margin-top: auto;
+}
+
+// @media screen and (max-width: 700px) {
+//   .main-buttons--small-header {
+//     margin-bottom:22vh;
+//   }
+// }
+
+// Teams at the bottom of the screen
+.teams {
+  display: flex;
+  width: 100%;
+  margin-top: auto;
+  column-gap: 20px;
+}
+
+@media screen and (max-width: 700px) {
+  .teams {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    padding: 10px 20px 20px 20px;
+    overflow-x: scroll;
+    align-items: center;
+  }
+}
+
+.team {
+  display: flex;
+  flex-direction: column;
+  width: 50%;
+  max-width: 200px;
+  height: 112px;
+  align-items: center;
+  background: $background;
+  box-shadow: $backgroundShadow;
+  border-radius: 10px;
+}
+
+@media screen and (max-width: 700px) {
+  .team {
+    // min-width: calc(50vw - 40px);
+    min-width: calc(50% - 10px);
+  }
+}
+
+.team-header {
+  @include center();
+  width: 100%;
+  height: 30px;
+  border-radius: 10px 10px 0px 0px;
+  background: $gray5;
+  color: $primaryText;
+}
+
+.active-header{
+  background: $primaryGradient;
+  color: $background;
+}
+
+.team__members {
+  display: flex;
+  width: 100%;
+  column-gap: 6px;
+  margin-top: auto;
+  padding: 0px 10px 10px;
+}
+
+.team__points {
+  margin-top: 5px;
+  font-size: 3rem;
+  font-family: "sf-pro-display-heavy", sans-serif;
+  letter-spacing: 0.1rem;
+  text-transform: uppercase;
+  color: $primary;
+}
+
+.team__member {
+  display: flex;
+  // So if it is 3 items it wont stretch to the whole width of the container
+  align-self: flex-start;
+  align-items: center;
+  justify-content: center;
+  width: 25%;
+  height: 26px;
+  font-size: 2rem;
+  font-family: "sf-pro-display-bold";
+  border-radius: 3px;
+  text-transform: uppercase;
+  background: $gray5;
+  color: $primaryText;
+}
+
+.team__member--active {
+  background: $primaryGradient;
+  color: $background;
+}
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+// SCREEN 4 - Round 1 and draw a card button
+.round-heading {
+  color: $primary;
+  margin-top: 2%;
+  margin-bottom: 0%;
+}
+//
+//
+//
+//
+//
+//
+//
+//
+//
+// WORDS
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  width: 100%;
+  max-width: 500px;
+  margin: auto 0;
+}
+
+.instruction {
+  margin-bottom: 1vh;
+}
+.card-container {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  height: 46px;
+  border-radius: 10px;
+  margin-top: 10px;
+  border: 2px solid $gray5;
+  background: $gray5;
+  box-shadow: $gray5Shadow;
+  cursor: pointer;
+}
+
+// .card--inactive {
+//   border: 2px solid $gray5;
+//   background: $gray5;
+//   box-shadow: $gray5Shadow;
+// }
+
+.card--active {
+  // There was a weird white border sticking out so have to use outlien
+  outline: 2px solid $primary;
+  outline-offset: -3px;
+  background: $primaryGradient;
+  box-shadow: $primaryShadow;
+}
+
+.card--active h6 {
+  color: $background;
+}
+
+.card__word-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  padding: 0px 20px;
+  width: 100%;
+}
+
+.card__icon {
+  @include center();
+  height: 100%;
+  width: 65px;
+  padding: 10px;
+  background: $background;
+  border-radius: 8px 0px 0px 8px;
+}
+
+.start-the-timer {
+  margin-top: 40px;
+}
+
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+// SCREEN WITH TIMER
+
+.card-xl {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 200px;
+  height: 88px;
+  margin-top: 20px;
+  margin-bottom: 60px;
+  border-radius: 10px;
+  background: $primaryGradient;
+}
+
+@media screen and (min-height: 700px) {
+  .card-xl {
+    margin-bottom: 80px;
+  }
+}
+
+.card-xl__icon-container {
+  @include center();
+  flex: 1;
+  height: 100%;
+  background: $background;
+  border: 2px solid $primary;
+  border-radius: 10px 0px 0px 10px;
+}
+
+.card-xl__point-container {
+  @include center();
+  flex: 1;
+}
+
+.card-xl__point-container h3 {
+  color: $background;
+}
+
+.card-xl-img {
+  width: 60px;
+}
+
+.timer {
+  @include center();
+  width: 100%;
+  height: 110px;
+  margin-top: 30px;
+  margin-bottom: 30px;
+  border-radius: 10px;
+}
+
+.timer-active {
+  background: $primaryGradient;
+}
+
+.timer--warning {
+  background: $warningGradient;
+}
+
+.timer--warning2 {
+  background: $errorGradient;
+}
+
+@media screen and (min-height: 700px) {
+  .timer {
+    margin-bottom: 10vh;
+  }
+}
+//
+//
+//
+//
+//
+
+
+
+
+//
+//
+//
+//
+// CORRENT ANSWER
+.correct-answer {
+  color: $primary;
+  margin-bottom: 30px;
+  opacity:1;
+  transform:scale(1);
+  transform:translateX(0px);
+  transition:all 1s ease-in;
+}
+
+@media screen and (min-height: 700px) {
+  .correct-answer {
+    margin-bottom: 60px;
+  }
+}
+// 
+// 
+// 
+// 
+// 
+// 
+// 
+// 
